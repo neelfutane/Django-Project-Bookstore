@@ -22,54 +22,35 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = 'bookstore_project' // change this if needed
+        PROJECT_DIR = 'bookstore_project' 
     }
 
     stages {
-        stage('Clean Up Old Containers') {
+        stage('Build') {
             steps {
-                echo 'Cleaning up old Docker containers...'
-                bat "docker-compose down || echo 'Nothing to clean'"
-                bat "docker system prune -a -f || echo 'Cleanup failed'"
+                echo '🔧 Building Docker containers...'
+                dir("${env.PROJECT_DIR}") {
+                    bat 'docker-compose build'
+                }
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Test') {
             steps {
-                echo 'Building Docker image...'
-                bat "docker-compose build"
+                echo '✅ Running Django tests...'
+                dir("${env.PROJECT_DIR}") {
+                    bat 'docker-compose run web python manage.py test'
+                }
             }
         }
 
-        stage('Apply Migrations') {
+        stage('Deploy') {
             steps {
-                echo 'Applying Django migrations...'
-                bat "docker-compose run web python manage.py migrate"
+                echo '🚀 Deploying the app using Docker Compose...'
+                dir("${env.PROJECT_DIR}") {
+                    bat 'docker-compose up -d'
+                }
             }
-        }
-
-        stage('Run Server') {
-            steps {
-                echo 'Starting the Django server...'
-                bat "docker-compose up -d"
-            }
-        }
-
-        stage('Check Logs') {
-            steps {
-                echo 'Dumping logs to docker_logs.txt...'
-                bat "docker-compose logs --no-color > docker_logs.txt"
-            }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline finished.'
-        }
-        failure {
-            echo 'Pipeline failed!'
         }
     }
 }
-
