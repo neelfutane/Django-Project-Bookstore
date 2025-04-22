@@ -39,10 +39,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Cleanup') {
+            steps {
+                bat 'docker system prune -a -f || echo "Cleanup failed"'
+                bat 'docker-compose down --remove-orphans || echo "No containers to remove"'
+            }
+        }
+
         stage('Checkout') {
             steps {
-                echo 'Cloning repository...'
-                git branch: 'main',
+                git branch: 'main', 
                     url: 'https://github.com/neelfutane/Django-Project-Bookstore.git'
             }
         }
@@ -50,22 +56,29 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker containers...'
-                bat 'docker-compose build' // Use 'bat' for Windows
+                retry(3) {
+                    bat 'docker-compose build --no-cache'
+                }
             }
         }
 
         stage('Apply Migrations') {
             steps {
-                echo 'Running Django migrations...'
-                bat 'docker-compose run web python manage.py migrate' // Use 'bat' for Windows
+                bat 'docker-compose run web python manage.py migrate'
             }
         }
 
         stage('Run Server') {
             steps {
-                echo 'Starting Django app...'
-                bat 'docker-compose up -d' // Use 'bat' for Windows
+                bat 'docker-compose up -d'
             }
+        }
+    }
+
+    post {
+        always {
+            bat 'docker-compose logs --no-color > docker_logs.txt'
+            archiveArtifacts artifacts: 'docker_logs.txt'
         }
     }
 }
