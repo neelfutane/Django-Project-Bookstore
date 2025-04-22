@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo '✅ Running Django tests...'
                 dir("${env.PROJECT_DIR}") {
-                    bat 'docker-compose run web python bookstore_project/manage.py test'
+                    bat 'docker-compose run web python manage.py test'
                 }
             }
         }
