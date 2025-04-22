@@ -11,6 +11,8 @@ COPY . /app
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+ENV DJANGO_SETTINGS_MODULE=bookstore_project.settings
+
 # Expose port Django runs on
 EXPOSE 8000
 
