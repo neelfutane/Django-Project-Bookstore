@@ -22,7 +22,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_DIR = '.' 
+        PROJECT_DIR = 'bookstore_project' 
     }
 
     stages {
@@ -35,16 +35,14 @@ pipeline {
             }
         }
 
-       stage('Test') {
-    steps {
-        echo '✅ Running Django tests...'
-        dir("${WORKSPACE}") {
-           bat 'docker-compose run -e DJANGO_SETTINGS_MODULE=bookstore_project.settings web python manage.py test'
-
+        stage('Test') {
+            steps {
+                echo '✅ Running Django tests...'
+                dir("${env.PROJECT_DIR}") {
+                    bat 'docker-compose run web python manage.py test'
+                }
+            }
         }
-    }
-}
-
 
         stage('Deploy') {
             steps {
