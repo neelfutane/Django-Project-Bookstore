@@ -2,7 +2,7 @@
 {% block content %}
 <h2>Your Cart</h2>
 <ul>
-    {% for book in books %}
+    {% for book in cart_books %}
     <li>{{ book.title }} - ${{ book.price }}</li>
     {% empty %}
     <li>Your cart is empty.</li>
