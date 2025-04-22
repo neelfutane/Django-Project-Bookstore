@@ -8,6 +8,6 @@ services:
       - .:/app
     working_dir: /app
     environment:
-      - DJANGO_SETTINGS_MODULE=settings  # Changed from bookstore_project.settings
+      - DJANGO_SETTINGS_MODULE=bookstore_project.settings  # Changed from bookstore_project.settings
       - PYTHONPATH=/app  # Add this to ensure Python can find your modules
     command: python manage.py runserver 0.0.0.0:8000
