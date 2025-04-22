@@ -46,5 +46,15 @@ This project includes full Docker support for containerized deployment and a Jen
 
 Build and run the containers:
 
-```bash
+``bash
 docker-compose up --build
+
+### 🔄 Jenkins CI/CD
+
+A Jenkins pipeline is configured to automatically manage the build and deployment process. On each push to the `main` branch, Jenkins will:
+
+- 🔄 Pull the latest code from GitHub
+- 🐳 Build Docker containers
+- 🚀 Run the application
+
+This ensures seamless integration and delivery with every update to the repository.
