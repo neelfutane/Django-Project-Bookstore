@@ -16,14 +16,16 @@
 FROM python:3.11-slim
 
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --fix-missing && \
+    apt-get install -y \
     gcc \
     g++ \
     libpq-dev \
     default-libmysqlclient-dev \
     build-essential \
-    netcat-openbsd \
-    && rm -rf /var/lib/apt/lists/*
+    netcat-openbsd && \
+    rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /app
 
