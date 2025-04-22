@@ -22,7 +22,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = 'bookstore' // change this if needed
+        PROJECT_NAME = 'bookstore_project' // change this if needed
     }
 
     stages {
