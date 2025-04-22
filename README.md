@@ -35,19 +35,19 @@ This is a full-stack web application developed as part of a Full Stack Python (D
 - **CI/CD**: Jenkins
 
 🐳 Docker & Jenkins CI/CD
-This project includes full Docker support for containerized deployment and a Jenkinsfile for automation:
+-This project includes full Docker support for containerized deployment and a Jenkinsfile for automation:
 
 📦 Docker Usage
-Build and run the containers:
-bash :
+-Build and run the containers:
+-bash :
 docker-compose up --build
-The app will be accessible at:
+-The app will be accessible at:
 http://localhost:8000/
 
 🔄 Jenkins CI/CD
-A Jenkins pipeline is configured to:
+-A Jenkins pipeline is configured to:
 
-Pull the latest code from GitHub
-Build Docker containers
-Run the app
-This ensures automatic build and deployment on every push to the main branch.
+-Pull the latest code from GitHub
+-Build Docker containers
+-Run the app
+-This ensures automatic build and deployment on every push to the main branch.
