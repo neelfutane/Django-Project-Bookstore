@@ -12,7 +12,6 @@ This is a full-stack web application developed as part of a Full Stack Python (D
 - View books with detailed publication info
 - Add books to cart using session-based logic
 - View & manage their cart
-- Switch languages (English, Hindi, Marathi) seamlessly on each page
 
 💡 *No use of Django Forms or Django Admin* — everything is handled manually using views and templates.
 
@@ -30,7 +29,7 @@ This is a full-stack web application developed as part of a Full Stack Python (D
 ## 🛠 Tech Stack
 
 - **Backend**: Django 4.x, Django REST Framework
-- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5
+- **Frontend**: HTML5, CSS3, Bootstrap 5
 - **Database**: PostgreSQL
 - **Authentication**: Django Allauth
 - **Deployment**: Docker, Nginx, Gunicorn
@@ -46,7 +45,7 @@ This project includes full Docker support for containerized deployment and a Jen
 
 Build and run the containers:
 
-``bash
+bash : 
 docker-compose up --build
 
 ### 🔄 Jenkins CI/CD
