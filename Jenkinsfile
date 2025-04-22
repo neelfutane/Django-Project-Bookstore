@@ -35,14 +35,15 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo '✅ Running Django tests...'
-                dir("${env.PROJECT_DIR}") {
-                    bat 'docker-compose run web python manage.py test'
-                }
-            }
+       stage('Test') {
+    steps {
+        echo '✅ Running Django tests...'
+        dir("${WORKSPACE}") {
+            bat 'docker-compose run web python manage.py test'
         }
+    }
+}
+
 
         stage('Deploy') {
             steps {
