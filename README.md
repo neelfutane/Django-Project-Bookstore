@@ -31,7 +31,6 @@ This is a full-stack web application developed as part of a Full Stack Python (D
 - **Backend**: Django 4.x, Django REST Framework
 - **Frontend**: HTML5, CSS3, Bootstrap 5
 - **Database**: PostgreSQL
-- **Authentication**: Django Allauth
 - **Deployment**: Docker, Nginx, Gunicorn
 - **CI/CD**: Jenkins
 
@@ -47,6 +46,8 @@ Build and run the containers:
 
 bash : 
 docker-compose up --build
+
+---
 
 ### 🔄 Jenkins CI/CD
 
