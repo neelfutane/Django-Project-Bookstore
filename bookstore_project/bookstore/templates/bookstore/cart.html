@@ -8,5 +8,11 @@
     <li>Your cart is empty.</li>
     {% endfor %}
 </ul>
-<a href="{% url 'book_list' %}">Back to Books</a>
+{% if cart_books %}
+  <hr>
+  <p><strong>Total Price: ${{ total_price }}</strong></p>
+{% endif %}
+<a href="{% url 'book_list' %}">Back to Books</a> | 
+<a href="{% url 'home' %}">Home Page</a>
 {% endblock %}
+
