@@ -1,28 +1,3 @@
-
-# FROM python:3.11-slim
-
-
-# RUN apt-get update --fix-missing && \
-#     apt-get install -y \
-#     gcc \
-#     g++ \
-#     libpq-dev \
-#     default-libmysqlclient-dev \
-#     build-essential \
-#     netcat-openbsd && \
-#     rm -rf /var/lib/apt/lists/*
-
-
-# WORKDIR /app
-
-# COPY requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# COPY . .
-
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-
 FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
