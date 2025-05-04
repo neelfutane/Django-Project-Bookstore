@@ -22,7 +22,8 @@
 
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
-FROM python:3.11  # Use full image instead of slim
+
+FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
